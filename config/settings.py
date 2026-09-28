@@ -89,9 +89,14 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 if os.environ.get("VERCEL"):
+    import shutil
+    tmp_db = "/tmp/db.sqlite3"
+    src_db = BASE_DIR / "db.sqlite3"
+    if src_db.exists() and not os.path.exists(tmp_db):
+        shutil.copy(src_db, tmp_db)
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
-            "NAME": "/tmp/db.sqlite3",
+            "NAME": tmp_db,
         }
     }
