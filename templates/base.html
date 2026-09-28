@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}เนื้อป่ะ{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <div class="topbar">
+    <strong>เนื้อป่ะ</strong>
+    <div>
+      <a href="/">แดชบอร์ด</a>
+      <a href="/menus/">เมนู</a>
+      <a href="/orders/kitchen/">ครัว</a>
+      <a href="/reports/sales/">รายงาน</a>
+      <a href="/admin/">แอดมิน</a>
+      <a href="/tables/qr/">QR โต๊ะ</a>
+    </div>
+  </div>
+  <div class="wrap">
+    {% block content %}{% endblock %}
+  </div>
+</body>
+</html>

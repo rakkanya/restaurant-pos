@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}เมนู{% endblock %}
+{% block content %}
+<div class="card">
+  <h1>เมนูร้านข้าวหน้าเนื้อ</h1>
+  <form method="get">
+    <input type="text" name="q" value="{{ q }}" placeholder="ค้นหาเมนู">
+    <select name="category">
+      <option value="">ทุกหมวด</option>
+      {% for c in categories %}
+        <option value="{{ c.id }}">{{ c.name }}</option>
+      {% endfor %}
+    </select>
+    <button class="btn" type="submit">ค้นหา</button>
+  </form>
+</div>
+<div class="grid">
+  {% for item in page %}
+    <div class="card">
+      {% if item.image %}
+        <img src="{{ item.image.url }}" alt="{{ item.name }}" style="width:100%;height:140px;object-fit:cover;border-radius:12px;">
+      {% endif %}
+      <h3>{{ item.name }}</h3>
+      <p class="price">{{ item.price }} บาท</p>
+      <p>{{ item.get_status_display }}</p>
+    </div>
+  {% empty %}
+    <div class="card">ยังไม่มีเมนู</div>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}QR โต๊ะ{% endblock %}
+{% block content %}
+<div class="card">
+  <h1>QR Code สำหรับลูกค้า</h1>
+  <p>ให้ลูกค้าสแกน QR ของโต๊ะตัวเองเพื่อสั่งอาหาร</p>
+</div>
+<div class="grid">
+  {% for table in tables %}
+    <div class="card">
+      <h2>โต๊ะ {{ table.number }}</h2>
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=http://172.20.10.2:8000/orders/table/{{ table.number }}/" alt="QR โต๊ะ {{ table.number }}">
+      <p><a href="/orders/table/{{ table.number }}/">เปิดหน้าสั่งโต๊ะนี้</a></p>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

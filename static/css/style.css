@@ -1,0 +1,38 @@
+body {
+  margin: 0;
+  font-family: "Tahoma", sans-serif;
+  background: #fff7f0;
+  color: #3b2a20;
+}
+.topbar {
+  background: #8b2e1f;
+  color: white;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.topbar a { color: #ffd7b0; margin-left: 12px; text-decoration: none; }
+.wrap { max-width: 980px; margin: 24px auto; padding: 0 16px; }
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 8px 20px rgba(139, 46, 31, 0.08);
+}
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+.btn {
+  background: #8b2e1f;
+  color: white;
+  border: 0;
+  padding: 10px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+input, select {
+  padding: 8px;
+  border: 1px solid #e2cfc4;
+  border-radius: 8px;
+}
+.price { color: #8b2e1f; font-weight: bold; }

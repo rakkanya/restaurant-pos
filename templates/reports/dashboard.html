@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}แดชบอร์ด{% endblock %}
+{% block content %}
+<div class="card">
+  <h1>แดชบอร์ดเนื้อป่ะ</h1>
+  <p>สวัสดี {{ user.username }}</p>
+</div>
+<div class="grid">
+  <div class="card"><h2>เมนู</h2><p>ดูรายการอาหาร</p><p><a class="btn" href="/menus/">เปิดเมนู</a></p></div>
+  <div class="card"><h2>ครัว</h2><p>ดูออเดอร์ตามเวลา</p><p><a class="btn" href="/orders/kitchen/">เปิดครัว</a></p></div>
+  <div class="card"><h2>รายงาน</h2><p>ยอดขายวันนี้</p><p><a class="btn" href="/reports/sales/">เปิดรายงาน</a></p></div>
+  <div class="card"><h2>แอดมิน</h2><p>จัดการข้อมูล</p><p><a class="btn" href="/admin/">เข้าแอดมิน</a></p></div>
+</div>
+{% endblock %}

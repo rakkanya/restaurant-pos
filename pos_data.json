@@ -1,0 +1,30 @@
+{
+  "menus": [
+    {
+      "id": 1,
+      "name": "ข้าวหน้าเนื้อ",
+      "price": 89.0,
+      "available": true
+    },
+    {
+      "id": 2,
+      "name": "ข้าวหน้าเนื้อไข่ลวก",
+      "price": 99.0,
+      "available": true
+    },
+    {
+      "id": 3,
+      "name": "เนื้อย่างจิ้มแจ่ว",
+      "price": 129.0,
+      "available": true
+    }
+  ],
+  "orders": [
+    {
+      "table": 1,
+      "menu": "ข้าวหน้าเนื้อ",
+      "qty": 2,
+      "total": 178.0
+    }
+  ]
+}

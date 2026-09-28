@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}สั่งอาหารโต๊ะ {{ table.number }}{% endblock %}
+{% block content %}
+<div class="card">
+  <h1>โต๊ะ {{ table.number }}</h1>
+  <p>สถานะโต๊ะ: {{ table.get_status_display }}</p>
+  {% if message %}<p>{{ message }}</p>{% endif %}
+</div>
+
+<div class="grid">
+  {% for item in menus %}
+    <div class="card">
+      {% if item.image %}
+        <img src="{{ item.image.url }}" alt="{{ item.name }}" style="width:100%;height:140px;object-fit:cover;border-radius:12px;">
+      {% endif %}
+      <h3>{{ item.name }}</h3>
+      <p class="price">{{ item.price }} บาท</p>
+      <p>{{ item.get_status_display }}</p>
+      {% if item.status == "available" %}
+      <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="menu_id" value="{{ item.id }}">
+        <input type="number" name="qty" value="1" min="1">
+        <button class="btn" type="submit" name="action" value="add">เพิ่ม</button>
+      </form>
+      {% else %}
+        <p>สั่งไม่ได้ เมนูหมด</p>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>
+
+<div class="card">
+  <h2>รายการที่สั่งแล้ว</h2>
+  {% if order %}
+    <ul>
+      {% for line in order.items.all %}
+        <li>
+          {{ line.menu_item.name }} x {{ line.quantity }}
+          ({{ line.get_status_display }})
+          {% if line.status != "cancelled" %}
+          <form method="post" style="display:inline">
+            {% csrf_token %}
+            <input type="hidden" name="menu_id" value="{{ line.menu_item_id }}">
+            <input type="hidden" name="qty" value="1">
+            <button type="submit" name="action" value="cancel">ยกเลิก</button>
+          </form>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>ยังไม่มีรายการ</p>
+  {% endif %}
+</div>
+{% endblock %}

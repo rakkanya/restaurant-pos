@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}รายงานยอดขาย{% endblock %}
+{% block content %}
+<h1>รายงานยอดขายวันที่ {{ today }}</h1>
+<p>จำนวนบิล: {{ bill_count }}</p>
+<p>ยอดขายรวม: {{ total_sales }}</p>
+<h2>เมนูขายดี</h2>
+<ul>
+  {% for row in top_menus %}
+    <li>{{ row.menu_item__name }} จำนวน {{ row.qty }} ยอด {{ row.sales }}</li>
+  {% empty %}
+    <li>ยังไม่มีข้อมูลวันนี้</li>
+  {% endfor %}
+</ul>
+<p><a href="/">กลับแดชบอร์ด</a></p>
+{% endblock %}

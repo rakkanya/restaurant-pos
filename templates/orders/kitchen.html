@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}หน้าครัว{% endblock %}
+{% block content %}
+<h1>หน้าครัว</h1>
+{% for order in orders %}
+  <h2>โต๊ะ {{ order.table.number }} - {{ order.get_status_display }}</h2>
+  <p>เวลา {{ order.created_at }}</p>
+  <ul>
+    {% for item in order.items.all %}
+      <li>{{ item.menu_item.name }} x {{ item.quantity }} ({{ item.get_status_display }})</li>
+    {% empty %}
+      <li>ยังไม่มีรายการ</li>
+    {% endfor %}
+  </ul>
+{% empty %}
+  <p>ยังไม่มีออเดอร์</p>
+{% endfor %}
+<p><a href="/admin/">กลับหน้าแอดมิน</a></p>
+{% endblock %}

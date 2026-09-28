@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}ใบเสร็จ{% endblock %}
+{% block content %}
+<h1>ใบเสร็จ</h1>
+<p>โต๊ะ {{ order.table.number }}</p>
+<p>ยอดก่อนคิด: {{ bill.subtotal }}</p>
+<p>ค่าบริการ: {{ bill.service_charge }}</p>
+<p>ภาษี: {{ bill.tax }}</p>
+<p>ส่วนลด: {{ bill.discount }}</p>
+<h2>ยอดสุทธิ: {{ bill.total }}</h2>
+<p><a href="/orders/kitchen/">กลับหน้าครัว</a></p>
+{% endblock %}
