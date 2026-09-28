@@ -81,3 +81,17 @@ LOGOUT_REDIRECT_URL = "login"
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
+import os
+
+SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.vercel.app",
+]
+
+if os.environ.get("VERCEL"):
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": "/tmp/db.sqlite3",
+        }
+    }
