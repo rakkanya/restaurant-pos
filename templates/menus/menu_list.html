@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title %}เมนู{% endblock %}
 {% block content %}
 <div class="card">
@@ -17,9 +18,11 @@
 <div class="grid">
   {% for item in page %}
     <div class="card">
-      {% if item.image %}
-        <img src="{{ item.image.url }}" alt="{{ item.name }}" style="width:100%;height:140px;object-fit:cover;border-radius:12px;">
-      {% endif %}
+{% if item.image %}
+  <img src="{% static 'img/beef.jpg' %}" alt="{{ item.name }}" style="width:100%;height:140px;object-fit:cover;border-radius:12px;">
+{% else %}
+  <img src="{% static 'img/beef.jpg' %}" alt="{{ item.name }}" style="width:100%;height:140px;object-fit:cover;border-radius:12px;">
+{% endif %}
       <h3>{{ item.name }}</h3>
       <p class="price">{{ item.price }} บาท</p>
       <p>{{ item.get_status_display }}</p>
